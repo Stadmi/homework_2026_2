@@ -13,36 +13,36 @@ const emailAnalyzer = (text) => {
         let emails = text.match(/[a-zA-Z0-9._%+-]+@([a-zA-Z0-9-]+\.)+[a-zA-Z0-9]{2,}/g); if (emails === null) {
             emails = [];
         }
-        let normalEmail = [];
+        const normalEmail = [];
         for (let i = 0; i < emails.length; i++) {
-            let email = emails[i];
-            let lowerEmail = email.toLowerCase();
+            const email = emails[i];
+            const lowerEmail = email.toLowerCase();
             normalEmail.push(lowerEmail);
         }
-        let emailCount = {};
+        const emailCount = {};
         for (let i = 0; i < normalEmail.length; i++) {
-            let email = normalEmail[i];
+            const email = normalEmail[i];
             if (emailCount[email] === undefined) {
                 emailCount[email] = 0;
             }
             emailCount[email]++;
         }
-        let uniqueEmails = [];
+        const uniqueEmails = [];
         for (let email in emailCount) {
             uniqueEmails.push(email);
         }
         let mostFrequentEmail = '';
         for (let i = 0; i < uniqueEmails.length; i++) {
-            let email = uniqueEmails[i];
+            const email = uniqueEmails[i];
             if (mostFrequentEmail === '') {
                 mostFrequentEmail = email;
             } else if (emailCount[email] > emailCount[mostFrequentEmail]) {
                 mostFrequentEmail = email;
             }
         }
-        let totalEmailCount = normalEmail.length;
+        const totalEmailCount = normalEmail.length;
 
-        let result = {
+        const result = {
             emailCount: totalEmailCount,
             uniqueEmails: uniqueEmails,
             mostFrequentEmail: mostFrequentEmail
