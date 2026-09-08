@@ -77,6 +77,17 @@ QUnit.module("Тестируем функцию emailAnalyzer", function() {
             mostFrequentEmail: ""
         });
     });
+
+    QUnit.test("email с доменом с цифрами", function(assert) {
+        const input = "Контакт: user@domain.123";
+        const result = emailAnalyzer(input);
+
+        assert.deepEqual(result, {
+            emailCount: 1,
+            uniqueEmails: ["user@domain.123"],
+            mostFrequentEmail: "user@domain.123"
+        });
+    });
 });
 
 

@@ -10,7 +10,7 @@
  */
 function emailAnalyzer(text) {
     if (typeof text === "string") {
-        let emails = text.match(/[a-zA-Z0-9._%+-]+@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}/g); if (emails === null) {
+        let emails = text.match(/[a-zA-Z0-9._%+-]+@([a-zA-Z0-9-]+\.)+[a-zA-Z0-9]{2,}/g); if (emails === null) {
             emails = [];
         }
         let normalEmail = [];
