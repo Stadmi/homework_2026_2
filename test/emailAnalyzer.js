@@ -55,6 +55,28 @@ QUnit.module("Тестируем функцию emailAnalyzer", function() {
             mostFrequentEmail: "a@test.com"
         });
     });
+
+    QUnit.test("null вместо строки", function(assert) {
+        const input = null;
+        const result = emailAnalyzer(input);
+
+        assert.deepEqual(result, {
+            emailCount: 0,
+            uniqueEmails: [],
+            mostFrequentEmail: ""
+        });
+    });
+
+    QUnit.test("число вместо строки", function(assert) {
+        const input = 123;
+        const result = emailAnalyzer(input);
+
+        assert.deepEqual(result, {
+            emailCount: 0,
+            uniqueEmails: [],
+            mostFrequentEmail: ""
+        });
+    });
 });
 
 
