@@ -23,10 +23,7 @@ const emailAnalyzer = (text) => {
             return acc;
         }, {});
 
-        const uniqueEmails = [];
-        for (let email in emailCount) {
-            uniqueEmails.push(email);
-        }
+        const uniqueEmails = Object.keys(emailCount);
         let mostFrequentEmail = '';
         for (let i = 0; i < uniqueEmails.length; i++) {
             const email = uniqueEmails[i];
