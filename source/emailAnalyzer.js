@@ -13,9 +13,9 @@ const emailAnalyzer = (text) => {
         let emails = text.match(/[a-zA-Z0-9._%+-]+@([a-zA-Z0-9-]+\.)+[a-zA-Z0-9]{2,}/g); if (emails === null) {
             emails = [];
         }
-        const normalEmail = emails.map(email => email.toLowerCase());
+        const normalEmails = emails.map(email => email.toLowerCase());
 
-        const emailCount = normalEmail.reduce((acc, email) => {
+        const emailFrequencies = normalEmails.reduce((acc, email) => {
             if (acc[email] === undefined) {
                 acc[email] = 0;
             }
@@ -23,17 +23,17 @@ const emailAnalyzer = (text) => {
             return acc;
         }, {});
 
-        const uniqueEmails = Object.keys(emailCount);
+        const uniqueEmails = Object.keys(emailFrequencies);
         let mostFrequentEmail = '';
         for (let i = 0; i < uniqueEmails.length; i++) {
             const email = uniqueEmails[i];
             if (mostFrequentEmail === '') {
                 mostFrequentEmail = email;
-            } else if (emailCount[email] > emailCount[mostFrequentEmail]) {
+            } else if (emailFrequencies[email] > emailFrequencies[mostFrequentEmail]) {
                 mostFrequentEmail = email;
             }
         }
-        const totalEmailCount = normalEmail.length;
+        const totalEmailCount = normalEmails.length;
 
         const result = {
             emailCount: totalEmailCount,
