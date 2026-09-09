@@ -7,6 +7,14 @@
  *     uniqueEmails: Array<String>,
  *     mostFrequentEmail: String
  * }}
+ * @example emailAnalyzer("Мой email: test@example.com")
+ * // { emailCount: 1, uniqueEmails: ["test@example.com"], mostFrequentEmail: "test@example.com" }
+ * 
+ *  Если в строке нет ни одного email-адреса, функция возвращает:
+ * { emailCount: 0, uniqueEmails: [], mostFrequentEmail: "" }
+ *
+ * Если аргумент не является строкой (null, число, объект и т.д.)
+ * функция также возвращает { emailCount: 0, uniqueEmails: [], mostFrequentEmail: "" }
  */
 const emailAnalyzer = (text) => {
     if (typeof text === "string") {
@@ -42,7 +50,7 @@ const emailAnalyzer = (text) => {
         };
 
         return result;
-    } else{
+    } else {
         return {
             emailCount: 0,
             uniqueEmails: [],
