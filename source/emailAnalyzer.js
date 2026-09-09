@@ -13,20 +13,16 @@ const emailAnalyzer = (text) => {
         let emails = text.match(/[a-zA-Z0-9._%+-]+@([a-zA-Z0-9-]+\.)+[a-zA-Z0-9]{2,}/g); if (emails === null) {
             emails = [];
         }
-        const normalEmail = [];
-        for (let i = 0; i < emails.length; i++) {
-            const email = emails[i];
-            const lowerEmail = email.toLowerCase();
-            normalEmail.push(lowerEmail);
-        }
-        const emailCount = {};
-        for (let i = 0; i < normalEmail.length; i++) {
-            const email = normalEmail[i];
-            if (emailCount[email] === undefined) {
-                emailCount[email] = 0;
+        const normalEmail = emails.map(email => email.toLowerCase());
+
+        const emailCount = normalEmail.reduce((acc, email) => {
+            if (acc[email] === undefined) {
+                acc[email] = 0;
             }
-            emailCount[email]++;
-        }
+            acc[email]++;
+            return acc;
+        }, {});
+
         const uniqueEmails = [];
         for (let email in emailCount) {
             uniqueEmails.push(email);
