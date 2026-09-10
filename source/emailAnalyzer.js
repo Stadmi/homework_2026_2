@@ -18,9 +18,12 @@
  */
 const emailAnalyzer = (text) => {
     if (typeof text === "string") {
-        let emails = text.match(/[a-zA-Z0-9._%+-]+@([a-zA-Z0-9-]+\.)+[a-zA-Z0-9]{1,}/g); if (emails === null) {
+        let emails = text.match(/[a-zA-Z0-9._%+-]+@([a-zA-Z0-9-]+\.)+[a-zA-Z0-9]{1,}/g); 
+
+        if (emails === null) {
             emails = [];
         }
+        
         const normalEmails = emails.map(email => email.toLowerCase());
 
         const emailFrequencies = normalEmails.reduce((acc, email) => {
