@@ -113,4 +113,16 @@ QUnit.module("Тестируем функцию emailAnalyzer", function () {
             "mostFrequentEmail должен быть одним из самых частых: a@test.com или b@test.com"
         );
     });
+
+    QUnit.test("Односимвольная доменная зона (c, 1) должна матчиться", function (assert) {
+        const input = "user@domain.c user@domain.1";
+        const result = emailAnalyzer(input);
+
+        assert.strictEqual(result.emailCount, 2, "должно найтись 2 email");
+        assert.deepEqual(
+            result.uniqueEmails.sort(),
+            ["user@domain.c", "user@domain.1"].sort(),
+            "уникальные email"
+        );
+    });
 });
