@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Анализирует электронные адреса в строке.
  *
@@ -23,7 +25,7 @@ const emailAnalyzer = (text) => {
         if (emails === null) {
             emails = [];
         }
-        
+
         const normalEmails = emails.map(email => email.toLowerCase());
 
         const emailFrequencies = normalEmails.reduce((acc, email) => {
